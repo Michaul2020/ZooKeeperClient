@@ -10,16 +10,16 @@ type NavigationProps = {
 
 type Props = NavigationProps;
 
-const LoginPage = (props: Props) => {
+const HomePage = (props: Props) => {
   return (
     <View style={styles.container}>
-      <Text>Login Page</Text>
+      <Text>Home Page</Text>
       <Button
-        title="Go to Home"
-        onPress={() => props.navigation.navigate("HomePage")}
+        title="Go to Login"
+        onPress={() => props.navigation.navigate("LoginPage")}
       />
     </View>
   );
 };
 
-export default LoginPage;
+export default HomePage;

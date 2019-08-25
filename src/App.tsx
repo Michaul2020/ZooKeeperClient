@@ -1,19 +1,19 @@
-import { Text, View } from 'react-native';
+import { Text, View } from "react-native";
 
+import AppNavigator from "./AppNavigator";
 import { Provider } from "react-redux";
-import React from 'react';
+import React from "react";
+import { createAppContainer } from "react-navigation";
 import { createStore } from "redux";
 import rootReducer from "./redux/reducers/rootReducer";
-import styles from "./styles";
 
 const store = createStore(rootReducer);
+const AppContainer = createAppContainer(AppNavigator);
 
 export default function App() {
   return (
     <Provider store={store}>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-      </View>
+      <AppContainer></AppContainer>
     </Provider>
   );
 }
