@@ -1,13 +1,20 @@
-import * as React from "react";
-import { Button, Text, View } from "react-native";
-import styles from "./styles";
 import * as Google from "expo-google-app-auth";
-import { signIn } from "../../redux/reducers/loginPageReducer";
+import * as React from "react";
+
+import { Button, Text, View } from "react-native";
+
+import appConfig from "../../../app.json";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { signIn } from "../../redux/reducers/loginPageReducer";
+import styles from "./styles";
+
+type Navigation = {
+  navigate: Function;
+};
 
 type NavigationProps = {
-  navigation: any;
+  navigation: Navigation;
 };
 
 type DispatchProps = {
@@ -16,21 +23,19 @@ type DispatchProps = {
 
 type Props = NavigationProps & DispatchProps;
 
-const googleLogIn = async signIn => {
-  const googleLogInResponse: Google.LogInResult = await Google.logInAsync({
-    clientId:
-      "810171739954-eje8m6f7hon2j7ij40i7ppspralg7jcv.apps.googleusercontent.com",
-    scopes: ["profile", "email"]
+const googleSignIn = async signIn => {
+  const googleSignInResponse: Google.LogInResult = await Google.logInAsync({
+    clientId: appConfig.googleAuth.clientId,
+    scopes: appConfig.googleAuth.scopes
   });
 
-  if (googleLogInResponse.type === "success") {
-    const { name, photoUrl } = googleLogInResponse.user;
-    signIn({ name, photoUrl });
+  if (googleSignInResponse.type === "success") {
+    const { name, photoUrl, id } = googleSignInResponse.user;
+    signIn({ name, photoUrl, id });
   }
 };
 
 const LoginPage = (props: Props) => {
-  console.log(props);
   return (
     <View style={styles.container}>
       <Text>Login Page</Text>
@@ -40,7 +45,7 @@ const LoginPage = (props: Props) => {
       />
       <Button
         title="Sign in with Google"
-        onPress={() => googleLogIn(props.signIn)}
+        onPress={() => googleSignIn(props.signIn)}
       ></Button>
     </View>
   );

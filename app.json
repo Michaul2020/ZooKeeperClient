@@ -4,11 +4,7 @@
     "slug": "ZooKeeper",
     "privacy": "public",
     "sdkVersion": "34.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,11 +16,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     }
+  },
+  "googleAuth": {
+    "clientId": "810171739954-eje8m6f7hon2j7ij40i7ppspralg7jcv.apps.googleusercontent.com",
+    "scopes": ["profile", "email"]
   }
 }

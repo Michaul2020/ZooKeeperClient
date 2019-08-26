@@ -18,6 +18,10 @@ const HomePage = (props: Props) => {
         title="Go to Login"
         onPress={() => props.navigation.navigate("LoginPage")}
       />
+      <Button
+        title="Go to Camera"
+        onPress={() => props.navigation.navigate("CameraPage")}
+      />
     </View>
   );
 };
