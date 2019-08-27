@@ -1,24 +1,41 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    backgroundColor: "black"
+  wrappingView: {
+    flex: 1
   },
-  preview: {
+  camera: {
+    flex: 1
+  },
+  subView: {
     flex: 1,
-    justifyContent: "flex-end",
+    backgroundColor: "transparent",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  touchableFlip: {
+    flex: 0.1,
+    alignSelf: "flex-end",
     alignItems: "center"
   },
-  capture: {
-    flex: 0,
-    backgroundColor: "#fff",
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: "center",
-    margin: 20
+  touchableSnapPhoto: {
+    flex: 0.3,
+    alignSelf: "flex-end",
+    alignItems: "center"
+  },
+  text: {
+    fontSize: 18,
+    marginBottom: 10,
+    color: "white"
+  },
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    alignSelf: "flex-end",
+    alignItems: "flex-end",
+    marginTop: 35,
+    right: 10,
+    position: "absolute"
   }
 });
 
