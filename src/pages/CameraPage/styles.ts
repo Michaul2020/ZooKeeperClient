@@ -30,11 +30,11 @@ const styles = StyleSheet.create({
     color: "white"
   },
   container: {
-    ...StyleSheet.absoluteFillObject,
     alignSelf: "flex-end",
     alignItems: "flex-end",
     marginTop: 35,
     right: 10,
+    top: 0,
     position: "absolute"
   }
 });
