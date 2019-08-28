@@ -7,5 +7,6 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
+*.DS_STORE
 web-build/
 web-report/
