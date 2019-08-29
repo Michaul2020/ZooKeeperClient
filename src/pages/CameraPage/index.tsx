@@ -4,7 +4,7 @@ import {
   CapturedPicture,
   PictureOptions
 } from "expo-camera/build/Camera.types";
-import { Dimensions, Image, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, Text, View } from "react-native";
 import {
   cameraIcon,
   flashIcon,
@@ -14,6 +14,7 @@ import {
 
 import { Camera } from "expo-camera";
 import React from "react";
+import TouchableIcon from "../../components/TouchableIcon";
 import getBestCameraRatio from "../../utilities/getBestCameraRatio";
 import styles from "./styles";
 
@@ -96,30 +97,21 @@ export default class CameraPage extends React.Component {
             ref={ref => (this.camera = ref)}
           >
             <View style={styles.subView}>
-              <TouchableOpacity
+              <TouchableIcon
                 style={styles.touchableFlip}
                 onPress={this.flipCamera}
-              >
-                <Image
-                  style={styles.flipCameraIcon}
-                  source={flipCameraIcon}
-                ></Image>
-              </TouchableOpacity>
-              <TouchableOpacity
+                imageSource={flipCameraIcon}
+              />
+              <TouchableIcon
                 style={styles.touchableFlash}
                 onPress={this.toggleFlash}
-              >
-                <Image
-                  style={styles.flashIcon}
-                  source={flashMode ? flashIcon : noFlashIcon}
-                ></Image>
-              </TouchableOpacity>
-              <TouchableOpacity
+                imageSource={flashMode ? flashIcon : noFlashIcon}
+              />
+              <TouchableIcon
                 style={styles.touchableSnapPhoto}
                 onPress={this.snapPhoto.bind(this)}
-              >
-                <Image style={styles.cameraIcon} source={cameraIcon}></Image>
-              </TouchableOpacity>
+                imageSource={cameraIcon}
+              />
             </View>
           </Camera>
         </View>

@@ -27,15 +27,6 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     alignItems: "center"
   },
-  cameraIcon: {
-    marginBottom: 10,
-    width: 64,
-    height: 64
-  },
-  flipCameraIcon: {
-    width: 64,
-    height: 64
-  },
   touchableFlash: {
     alignSelf: "flex-end",
     alignItems: "flex-end",
@@ -43,10 +34,6 @@ const styles = StyleSheet.create({
     right: 10,
     top: 0,
     position: "absolute"
-  },
-  flashIcon: {
-    width: 64,
-    height: 64
   }
 });
 
