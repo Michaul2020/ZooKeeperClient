@@ -1,12 +1,11 @@
-import * as Google from "expo-google-app-auth";
 import * as React from "react";
 
-import { Button, Text, View } from "react-native";
+import { Button, Image, Text, View } from "react-native";
 
-import appConfig from "../../../app.json";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { signIn } from "../../redux/reducers/loginPageReducer";
+import GoogleSignInButton from "../../components/GoogleSignInButton";
+import SkipSignInButton from "../../components/SkipSignInButton";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { logo } from "../../utilities/img/index";
 import styles from "./styles";
 
 type Navigation = {
@@ -17,49 +16,25 @@ type NavigationProps = {
   navigation: Navigation;
 };
 
-type DispatchProps = {
-  signIn: Function;
-};
-
-type Props = NavigationProps & DispatchProps;
-
-const googleSignIn = async signIn => {
-  const googleSignInResponse: Google.LogInResult = await Google.logInAsync({
-    clientId: appConfig.googleAuth.clientId,
-    scopes: appConfig.googleAuth.scopes
-  });
-
-  if (googleSignInResponse.type === "success") {
-    const { name, photoUrl, id } = googleSignInResponse.user;
-    signIn({ name, photoUrl, id });
-  }
-};
+type Props = NavigationProps;
 
 const LoginPage = (props: Props) => {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
-      <Text>Login Page</Text>
-      <Button
-        title="Go to Home"
-        onPress={() => props.navigation.navigate("HomePage")}
-      />
-      <Button
-        title="Sign in with Google"
-        onPress={() => googleSignIn(props.signIn)}
-      ></Button>
+      <Image style={styles.logo} source={logo}></Image>
+      <Text style={styles.zookeeperText}>ZooKeeper</Text>
+      <GoogleSignInButton
+        style={styles.googleSignInButton}
+        navigation={navigation}
+      ></GoogleSignInButton>
+
+      <SkipSignInButton
+        style={styles.skipButton}
+        navigation={navigation}
+      ></SkipSignInButton>
     </View>
   );
 };
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      signIn
-    },
-    dispatch
-  );
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(LoginPage);
+export default LoginPage;

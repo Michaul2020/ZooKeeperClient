@@ -7,7 +7,10 @@ export const signIn = googleResponse => ({
   payload: googleResponse
 });
 
-const loginPageReducer = (state: State = INITIAL_STATE, action): State => {
+const googleSignInButtonReducer = (
+  state: State = INITIAL_STATE,
+  action
+): State => {
   switch (action.type) {
     case SIGN_IN:
       const { name, photoUrl, id } = action.payload;
@@ -17,4 +20,4 @@ const loginPageReducer = (state: State = INITIAL_STATE, action): State => {
   }
 };
 
-export default loginPageReducer;
+export default googleSignInButtonReducer;

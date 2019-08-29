@@ -1,7 +1,7 @@
 import { INITIAL_STATE, State } from "../state";
 
 import { combineReducers } from "redux";
-import loginPageReducer from "./loginPageReducer";
+import googleSignInButtonReducer from "./googleSignInButtonReducer";
 
 const rootReducer = (state: State = INITIAL_STATE, action): State => {
   switch (action.type) {
@@ -12,5 +12,5 @@ const rootReducer = (state: State = INITIAL_STATE, action): State => {
 
 export default combineReducers({
   root: rootReducer,
-  loginPage: loginPageReducer
+  googleSignInButton: googleSignInButtonReducer
 });

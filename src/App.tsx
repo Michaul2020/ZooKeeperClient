@@ -1,18 +1,19 @@
+import { AnyAction, Store, createStore } from "redux";
+import { NavigationContainer, createAppContainer } from "react-navigation";
+
 import CameraPage from "./pages/CameraPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import { Provider } from "react-redux";
 import React from "react";
-import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation";
-import { createStore } from "redux";
 import { registerRootComponent } from "expo";
 import rootReducer from "./redux/reducers/rootReducer";
 
-const AppNavigator = createStackNavigator(
+const AppNavigator: NavigationContainer = createStackNavigator(
   {
-    HomePage: HomePage,
     LoginPage: LoginPage,
+    HomePage: HomePage,
     CameraPage: CameraPage
   },
   {
@@ -22,8 +23,8 @@ const AppNavigator = createStackNavigator(
   }
 );
 
-const store = createStore(rootReducer);
-const AppContainer = createAppContainer(AppNavigator);
+const store: Store<any, AnyAction> = createStore(rootReducer);
+const AppContainer: NavigationContainer = createAppContainer(AppNavigator);
 
 const App = () => {
   return (
