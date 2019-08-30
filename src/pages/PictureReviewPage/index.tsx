@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Image, View } from "react-native";
 
+import { CapturedPicture } from "expo-camera/build/Camera.types";
 import { connect } from "react-redux";
 import styles from "./styles";
 
@@ -10,7 +11,7 @@ type NavigationProps = {
 };
 
 type StateProps = {
-  pictureToReview: string;
+  pictureToReview: CapturedPicture;
 };
 
 type Props = NavigationProps & StateProps;
@@ -20,13 +21,12 @@ const PictureReviewPage = (props: Props) => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={{ uri: pictureToReview }} />
+      <Image style={styles.image} source={{ uri: pictureToReview.uri }} />
     </View>
   );
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return { pictureToReview: state.camera.pictureToReview };
 };
 

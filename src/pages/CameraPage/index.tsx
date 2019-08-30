@@ -62,13 +62,15 @@ class CameraPage extends Component<Props> {
       const options: PictureOptions = {
         quality: 1,
         base64: true,
-        exif: true
+        exif: true,
+        skipProcessing: true
       };
       const capturedPicture: CapturedPicture = await this.camera.takePictureAsync(
         options
       );
       capturedPicture.exif.Orientation = 1;
-      snapPhoto(capturedPicture.uri);
+      snapPhoto(capturedPicture);
+
       navigation.navigate("PictureReviewPage");
       this.state.isSnappingPhoto = false;
     }

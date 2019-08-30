@@ -1,6 +1,7 @@
+import { CapturedPicture } from "expo-camera/build/Camera.types";
 import { SNAP_PHOTO } from "../types";
 
-export const snapPhoto = (pictureToReview: string) => ({
+export const snapPhoto = (pictureToReview: CapturedPicture) => ({
   type: SNAP_PHOTO,
   payload: pictureToReview
 });
