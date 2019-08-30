@@ -5,6 +5,7 @@ import {
   PictureOptions
 } from "expo-camera/build/Camera.types";
 import { Dimensions, Text, View } from "react-native";
+import React, { Component } from "react";
 import {
   cameraIcon,
   flashIcon,
@@ -13,17 +14,25 @@ import {
 } from "../../utilities/img/index";
 
 import { Camera } from "expo-camera";
-import React from "react";
 import TouchableIcon from "../../components/TouchableIcon";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import getBestCameraRatio from "../../utilities/getBestCameraRatio";
+import { snapPhoto } from "../../redux/reducers/cameraReducer";
 import styles from "./styles";
 
-export default class CameraPage extends React.Component {
+interface Props {
+  navigation: any;
+  snapPhoto: Function;
+}
+
+class CameraPage extends Component<Props> {
   state = {
     hasCameraPermission: null,
     cameraType: Camera.Constants.Type.back,
     flashMode: Camera.Constants.FlashMode.off,
-    ratio: "16:9"
+    ratio: "16:9",
+    isSnappingPhoto: false
   };
   camera: Camera;
 
@@ -47,8 +56,9 @@ export default class CameraPage extends React.Component {
     this.setState({ hasCameraPermission: status === "granted" });
   };
 
-  snapPhoto = async () => {
-    if (this.camera) {
+  snapPhoto = async (navigation, snapPhoto) => {
+    if (this.camera && !this.state.isSnappingPhoto) {
+      this.state.isSnappingPhoto = true;
       const options: PictureOptions = {
         quality: 1,
         base64: true,
@@ -58,6 +68,9 @@ export default class CameraPage extends React.Component {
         options
       );
       capturedPicture.exif.Orientation = 1;
+      snapPhoto(capturedPicture.uri);
+      navigation.navigate("PictureReviewPage");
+      this.state.isSnappingPhoto = false;
     }
   };
 
@@ -81,6 +94,8 @@ export default class CameraPage extends React.Component {
 
   render() {
     const { hasCameraPermission, flashMode } = this.state;
+    const { navigation, snapPhoto } = this.props;
+
     if (hasCameraPermission === null) {
       return <View />;
     } else if (!hasCameraPermission) {
@@ -109,7 +124,7 @@ export default class CameraPage extends React.Component {
               />
               <TouchableIcon
                 style={styles.touchableSnapPhoto}
-                onPress={this.snapPhoto.bind(this)}
+                onPress={this.snapPhoto.bind(this, navigation, snapPhoto)}
                 imageSource={cameraIcon}
               />
             </View>
@@ -119,3 +134,16 @@ export default class CameraPage extends React.Component {
     }
   }
 }
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      snapPhoto
+    },
+    dispatch
+  );
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CameraPage);

@@ -10,13 +10,11 @@ import {
 
 import styles from "./style";
 
-type InheritedProps = {
+interface Props {
   style?: StyleProp<ViewStyle>;
   onPress: (event: GestureResponderEvent) => void;
   imageSource: number;
-};
-
-type Props = InheritedProps;
+}
 
 const TouchableIcon = (props: Props) => {
   const { style, onPress, imageSource } = props;

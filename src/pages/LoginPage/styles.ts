@@ -22,9 +22,5 @@ export default StyleSheet.create({
   googleSignInButton: {
     position: "absolute",
     bottom: "25%"
-  },
-  skipButton: {
-    position: "absolute",
-    bottom: "15%"
   }
 });

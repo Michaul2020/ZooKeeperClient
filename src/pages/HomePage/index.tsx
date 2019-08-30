@@ -4,11 +4,9 @@ import { Button, Text, View } from "react-native";
 
 import styles from "./styles";
 
-type NavigationProps = {
+interface Props {
   navigation: any;
-};
-
-type Props = NavigationProps;
+}
 
 const HomePage = (props: Props) => {
   return (

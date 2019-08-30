@@ -4,6 +4,7 @@ import { NavigationContainer, createAppContainer } from "react-navigation";
 import CameraPage from "./pages/CameraPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
+import PictureReviewPage from "./pages/PictureReviewPage";
 import { Provider } from "react-redux";
 import React from "react";
 import { createStackNavigator } from "react-navigation";
@@ -14,7 +15,8 @@ const AppNavigator: NavigationContainer = createStackNavigator(
   {
     LoginPage: LoginPage,
     HomePage: HomePage,
-    CameraPage: CameraPage
+    CameraPage: CameraPage,
+    PictureReviewPage: PictureReviewPage
   },
   {
     defaultNavigationOptions: {

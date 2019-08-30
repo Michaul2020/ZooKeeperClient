@@ -10,22 +10,18 @@ import { googleSignInButton } from "../../utilities/img";
 import { signIn } from "../../redux/reducers/googleSignInButtonReducer";
 import styles from "./styles";
 
-type Navigation = {
-  navigate: Function;
-};
-
-type InheritedProps = {
-  navigation: Navigation;
+interface InheritedProps {
+  navigation: any;
   style?: StyleProp<ViewStyle>;
-};
+}
 
-type DispatchProps = {
+interface DispatchProps {
   signIn?: Function;
-};
+}
 
 type Props = InheritedProps & DispatchProps;
 
-const googleSignIn = async (navigation: Navigation, signIn: Function) => {
+const googleSignIn = async (navigation: any, signIn: Function) => {
   const googleSignInResponse: Google.LogInResult = await Google.logInAsync({
     clientId: appConfig.googleAuth.clientId,
     scopes: appConfig.googleAuth.scopes

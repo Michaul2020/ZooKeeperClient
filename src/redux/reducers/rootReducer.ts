@@ -1,16 +1,8 @@
-import { INITIAL_STATE, State } from "../state";
-
+import cameraReducer from "./cameraReducer";
 import { combineReducers } from "redux";
 import googleSignInButtonReducer from "./googleSignInButtonReducer";
 
-const rootReducer = (state: State = INITIAL_STATE, action): State => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
 export default combineReducers({
-  root: rootReducer,
+  camera: cameraReducer,
   googleSignInButton: googleSignInButtonReducer
 });

@@ -1,22 +1,17 @@
 import * as React from "react";
 
-import { Button, StyleProp, TouchableOpacity, ViewStyle } from "react-native";
+import { Button, TouchableOpacity } from "react-native";
 
-type Navigation = {
-  navigate: Function;
-};
+import styles from "./styles";
 
-type InheritedProps = {
-  navigation: Navigation;
-  style?: StyleProp<ViewStyle>;
-};
-
-type Props = InheritedProps;
+interface Props {
+  navigation: any;
+}
 
 const SkipSignInButton = (props: Props) => {
-  const { style, navigation } = props;
+  const { navigation } = props;
   return (
-    <TouchableOpacity style={style}>
+    <TouchableOpacity style={styles.skipButton}>
       <Button
         title="Skip sign-in"
         onPress={() => navigation.navigate("HomePage")}
