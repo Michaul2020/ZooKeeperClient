@@ -58,7 +58,7 @@ class CameraPage extends Component<Props> {
 
   snapPhoto = async (navigation, snapPhoto) => {
     if (this.camera && !this.state.isSnappingPhoto) {
-      this.state.isSnappingPhoto = true;
+      this.setState({ isSnappingPhoto: true });
       const options: PictureOptions = {
         quality: 1,
         base64: true,
@@ -72,7 +72,7 @@ class CameraPage extends Component<Props> {
       snapPhoto(capturedPicture);
 
       navigation.navigate("PictureReviewPage");
-      this.state.isSnappingPhoto = false;
+      this.setState({ isSnappingPhoto: false });
     }
   };
 
