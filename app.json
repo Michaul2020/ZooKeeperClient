@@ -24,5 +24,6 @@
   "googleAuth": {
     "clientId": "810171739954-eje8m6f7hon2j7ij40i7ppspralg7jcv.apps.googleusercontent.com",
     "scopes": ["profile", "email"]
-  }
+  },
+  "labelProbabilityThreshold": 0.5
 }

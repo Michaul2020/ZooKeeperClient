@@ -1,6 +1,7 @@
 import { CapturedPicture } from "expo-camera/build/Camera.types";
 import { SNAP_PHOTO } from "../types";
 
+// TODO: Update snapPhoto to take an array of suggested labels and update the camera reducer
 export const snapPhoto = (pictureToReview: CapturedPicture) => ({
   type: SNAP_PHOTO,
   payload: pictureToReview
